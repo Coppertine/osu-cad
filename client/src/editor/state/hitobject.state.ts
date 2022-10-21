@@ -55,6 +55,14 @@ export class HitObjectManager {
         )
     }
 
+    getFirstHitObject() {
+        return this.hitObjects[0]
+    }
+
+    getLastHitObject() {
+        return this.hitObjects[this.hitObjects.length - 1]
+    }
+
     addHitObject(hitObject: HitObject) {
         let {index} = this.findHitObjectIndex(hitObject.time)
         this.#hitObjects.splice(index, 0, hitObject)
