@@ -17,7 +17,7 @@ export class AuthController {
     login(@Req() req, @Res() res: Response) {
         const {accessToken} = this.jwtAuthService.login(req.user);
         res.cookie('jwt', accessToken);
-        res.redirect(302, 'http://osucad.com:8081/logged-in')
+        res.redirect(302, `http://${req.hostname}:8081/logged-in`)
     }
 
 }

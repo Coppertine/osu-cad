@@ -8,7 +8,7 @@ async function bootstrap() {
     app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)))
     app.use(json({ limit: '50mb' }))
     app.enableCors({
-        origin: ['http://osucad.com:8081'],
+        origin: ['http://osucad.com:8081', 'http://localhost:8081'],
         credentials: true
     })
     await app.listen(3000);
