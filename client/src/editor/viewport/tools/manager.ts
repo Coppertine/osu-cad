@@ -231,6 +231,34 @@ export class ToolManager {
             this.toolId = 'slider'
             evt.preventDefault()
         }
+
+        if(evt.detail === "z") {
+            const first = this.ctx.state.beatmap.hitobjects.getFirstHitObject()
+            if(first) {
+              if(Math.abs(this.ctx.clock.time - first.overriddenTime) > 50) {
+                this.ctx.clock.seek(first.overriddenTime, true)
+                evt.preventDefault()
+                return 
+              }
+            }
+            this.ctx.clock.seek(0, true)
+            evt.preventDefault()
+        }
+
+        if(evt.detail === "v") {
+            const last = this.ctx.state.beatmap.hitobjects.getLastHitObject()
+            if(last) {
+              if(Math.abs(this.ctx.clock.time - last.overriddenTime) > 50) {
+                this.ctx.clock.seek(last.overriddenTime, true)
+                evt.preventDefault()
+                return 
+              }
+            }
+            if(this.ctx.songAudio) {
+                this.ctx.clock.seek(this.ctx.songAudio.duration * 1000, true)
+            }
+            evt.preventDefault()
+        }
     }
 
     copiedHitObjects: SerializedHitObject[] = []
