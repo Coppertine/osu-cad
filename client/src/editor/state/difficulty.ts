@@ -22,7 +22,7 @@ export class DifficultyManager {
     hpDrainRate = ref(5)
 
     get circleRadius() {
-        return 32
+        return 54.4 - 4.48 * this.circleSize.value
     }
 
 }
